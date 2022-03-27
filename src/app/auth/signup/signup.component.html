@@ -1,0 +1,45 @@
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+      <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required
+        form group has a validation state that can be triggered by attempting to submit the form without completing it.
+      </p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form [formGroup]="signupForm" class="p-4 p-md-5 border rounded-3 bg-light" name="signupForm"
+        (ngSubmit)="onSignUp()">
+        <h2 class="text-center">Create account to continue</h2>
+        <br>
+        <div class="form-floating mb-3">
+          <input formControlName="username" ng-model="username" type="text" class="form-control" id="username"
+            placeholder="Enter your name">
+          <label for="username">Full Name</label>
+          <span class="error" *ngIf="username && username.invalid && username.touched">Name is required</span>
+        </div>
+        <div class="form-floating mb-3">
+          <input formControlName="email" type="email" class="form-control" id="useremail"
+            placeholder="name@example.com">
+          <label for="useremail">Email address</label>
+          <span class="error" *ngIf="email && email.invalid && email.touched">Email address is required</span>
+        </div>
+        <div class="form-floating mb-3">
+          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+          <label for="password">Password</label>
+          <span class="error" *ngIf="password && password.invalid && password.touched">Password is required</span>
+        </div>
+        <div class="form-floating mb-3">
+          <input formControlName="confirmpassword" appConfirmEqualValidator="password" type="password"
+            class="form-control" id="confirmpassword" placeholder="Password">
+          <label for="confirmpassword">Confirm Password</label>
+          <span class="error" *ngIf="confirmpassword && confirmpassword.invalid && confirmpassword.touched">Password do
+            not match</span>
+        </div>
+        <button [disabled]="signupForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+        <hr class="my-4">
+        <small class="text-center">Already have an account? Click <span><a routerLink="/login"
+              routerLinkActive="active">here</a> to login</span></small>
+      </form>
+    </div>
+  </div>
+</div>
